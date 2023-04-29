@@ -14,8 +14,7 @@ namespace CoreAuthAPI
         {
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddControllers();
-
+            
             //Register authentication service
             builder.Services.AddAuthentication(options =>
             { 
@@ -37,6 +36,7 @@ namespace CoreAuthAPI
                 };
             });
             builder.Services.AddAuthorization();
+            builder.Services.AddControllers();
             return builder;
         }
 
@@ -51,7 +51,11 @@ namespace CoreAuthAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            //Enable CORS policy
+            app.UseCors(x=>x
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 
             //Generate token
             app.MapPost("/security/createToken",
