@@ -18,7 +18,7 @@ namespace CoreAuthAPI
 
             //Register authentication service
             builder.Services.AddAuthentication(options =>
-            { hub desktop
+            { 
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
